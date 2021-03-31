@@ -1,0 +1,3 @@
+services:
+    Core\Infrastructure\Symfony\Controller\OAuthController:
+        tags: ['controller.service_arguments']

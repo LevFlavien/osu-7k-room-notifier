@@ -37,6 +37,8 @@ class Kernel extends BaseKernel
         } elseif (is_file($path = \dirname(__DIR__).'/config/services.php')) {
             (require $path)($container->withPath($path), $this);
         }
+
+        $container->import($this->getProjectDir().'/src/Core/Infrastructure/Symfony/config/*.yaml', 'glob');
     }
 
     protected function configureRoutes(RoutingConfigurator $routes): void
@@ -49,5 +51,7 @@ class Kernel extends BaseKernel
         } elseif (is_file($path = \dirname(__DIR__).'/config/routes.php')) {
             (require $path)($routes->withPath($path), $this);
         }
+
+        $routes->import($this->getProjectDir().'/src/Core/Infrastructure/Symfony/config/routing/*.yaml');
     }
 }
